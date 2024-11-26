@@ -20,9 +20,17 @@ local OrionLib = {
 			Divider = Color3.fromRGB(60, 60, 60),
 			Text = Color3.fromRGB(240, 240, 240),
 			TextDark = Color3.fromRGB(150, 150, 150)
-		}
+		},
+		XIE = {
+			Main = Color3.fromRGB(15, 15, 20), 
+			Second = Color3.fromRGB(30, 30, 40), 
+			Stroke = Color3.fromRGB(90, 20, 140), 
+			Divider = Color3.fromRGB(80, 80, 100), 
+			Text = Color3.fromRGB(255, 85, 85), 
+			TextDark = Color3.fromRGB(100, 200, 255)
+		},
 	},
-	SelectedTheme = "Default",
+	SelectedTheme = "XIE",
 	Folder = nil,
 	SaveCfg = false
 }
@@ -453,11 +461,11 @@ function OrionLib:Init()
 		pcall(function()
 			if isfile(OrionLib.Folder .. "/" .. game.GameId .. ".txt") then
 				LoadCfg(readfile(OrionLib.Folder .. "/" .. game.GameId .. ".txt"))
-				OrionLib:MakeNotification({
-					Name = "Configuration",
-					Content = "Auto-loaded configuration for the game " .. game.GameId .. ".",
-					Time = 5
-				})
+				-- OrionLib:MakeNotification({
+				-- 	Name = "Configuration",
+				-- 	Content = "Auto-loaded configuration for the game " .. game.GameId .. ".",
+				-- 	Time = 5
+				-- })
 			end
 		end)		
 	end	
@@ -649,11 +657,11 @@ function OrionLib:MakeWindow(WindowConfig)
 	AddConnection(CloseBtn.MouseButton1Up, function()
 		MainWindow.Visible = false
 		UIHidden = true
-		OrionLib:MakeNotification({
-			Name = "Interface Hidden",
-			Content = "Tap RightShift to reopen the interface",
-			Time = 5
-		})
+		-- OrionLib:MakeNotification({
+		-- 	Name = "Interface Hidden",
+		-- 	Content = "Tap RightShift to reopen the interface",
+		-- 	Time = 5
+		-- })
 		WindowConfig.CloseCallback()
 	end)
 
@@ -1710,11 +1718,11 @@ function OrionLib:MakeWindow(WindowConfig)
 		return ElementFunction   
 	end  
 	
-	OrionLib:MakeNotification({
-		Name = "UI Library Upgrade",
-		Content = "New UI Library Available at sirius.menu/discord and sirius.menu/rayfield",
-		Time = 5
-	})
+	-- OrionLib:MakeNotification({
+	-- 	Name = "UI Library Upgrade",
+	-- 	Content = "New UI Library Available at sirius.menu/discord and sirius.menu/rayfield",
+	-- 	Time = 5
+	-- })
 	
 
 	
