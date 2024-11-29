@@ -110,38 +110,6 @@ task.spawn(function()
 	end
 end)
 
--- local function AddDraggingFunctionality(DragPoint, Main)
--- 	pcall(function()
--- 		local Dragging, DragInput, MousePos, FramePos = false
--- 		DragPoint.InputBegan:Connect(function(Input)
--- 			if Input.UserInputType == Enum.UserInputType.MouseButton1 then
--- 				Dragging = true
--- 				MousePos = Input.Position
--- 				FramePos = Main.Position
-
--- 				Input.Changed:Connect(function()
--- 					if Input.UserInputState == Enum.UserInputState.End then
--- 						Dragging = false
--- 					end
--- 				end)
--- 			end
--- 		end)
--- 		DragPoint.InputChanged:Connect(function(Input)
--- 			if Input.UserInputType == Enum.UserInputType.MouseMovement then
--- 				DragInput = Input
--- 			end
--- 		end)
--- 		UserInputService.InputChanged:Connect(function(Input)
--- 			if Input == DragInput and Dragging then
--- 				local Delta = Input.Position - MousePos
--- 				TweenService:Create(Main, TweenInfo.new(0.45, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position  = UDim2.new(FramePos.X.Scale,FramePos.X.Offset + Delta.X, FramePos.Y.Scale, FramePos.Y.Offset + Delta.Y)}):Play()
--- 			end
--- 		end)
--- 	end)
--- end   
-
--- XIE Code
-
 local function AddDraggingFunctionality(DragPoint, Main)
     pcall(function()
         local Dragging, DragInput, MousePos, FramePos = false, nil, nil, nil
@@ -508,11 +476,6 @@ function OrionLib:Init()
 		pcall(function()
 			if isfile(OrionLib.Folder .. "/" .. game.GameId .. ".txt") then
 				LoadCfg(readfile(OrionLib.Folder .. "/" .. game.GameId .. ".txt"))
-				-- OrionLib:MakeNotification({
-				-- 	Name = "Configuration",
-				-- 	Content = "Auto-loaded configuration for the game " .. game.GameId .. ".",
-				-- 	Time = 5
-				-- })
 			end
 		end)		
 	end	
@@ -520,9 +483,9 @@ end
 
 function OrionLib:MakeWindow(WindowConfig)
 	local FirstTab = true
-	local Minimized = false
-	local Loaded = false
-	local UIHidden = false
+	local Minimized = true
+	local Loaded = true
+	local UIHidden = true
 
 	WindowConfig = WindowConfig or {}
 	WindowConfig.Name = WindowConfig.Name or "Orion Library"
@@ -660,13 +623,6 @@ function OrionLib:MakeWindow(WindowConfig)
 		Size = UDim2.new(0, 615, 0, 344),
 		ClipsDescendants = true
 	}), {
-		--SetProps(MakeElement("Image", "rbxassetid://3523728077"), {
-		--	AnchorPoint = Vector2.new(0.5, 0.5),
-		--	Position = UDim2.new(0.5, 0, 0.5, 0),
-		--	Size = UDim2.new(1, 80, 1, 320),
-		--	ImageColor3 = Color3.fromRGB(33, 33, 33),
-		--	ImageTransparency = 0.7
-		--}),
 		SetChildren(SetProps(MakeElement("TFrame"), {
 			Size = UDim2.new(1, 0, 0, 50),
 			Name = "TopBar"
@@ -1764,15 +1720,7 @@ function OrionLib:MakeWindow(WindowConfig)
 		end
 		return ElementFunction   
 	end  
-	
-	-- OrionLib:MakeNotification({
-	-- 	Name = "UI Library Upgrade",
-	-- 	Content = "New UI Library Available at sirius.menu/discord and sirius.menu/rayfield",
-	-- 	Time = 5
-	-- })
-	
 
-	
 	return TabFunction
 end   
 
