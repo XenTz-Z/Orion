@@ -425,23 +425,23 @@ function OrionLib:MakeNotification(NotificationConfig)
             Parent = NotificationHolder
         })
 
-        local NotificationFrame = SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(30, 30, 30), 0, 10), {
+        local NotificationFrame = SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(20, 20, 25), 0, 12), {
             Parent = NotificationParent, 
             Size = UDim2.new(1, 0, 0, 0),
             Position = UDim2.new(1, -55, 0, 0),
             BackgroundTransparency = 0,
             AutomaticSize = Enum.AutomaticSize.Y
         }), {
-            MakeElement("Stroke", Color3.fromRGB(60, 60, 60), 1.2),
-            MakeElement("Padding", 12, 12, 12, 12),
+            MakeElement("Stroke", Color3.fromRGB(80, 150, 250), 1.5),
+            MakeElement("Padding", 15, 15, 15, 15),
             SetProps(MakeElement("Image", NotificationConfig.Image), {
-                Size = UDim2.new(0, 20, 0, 20),
-                ImageColor3 = Color3.fromRGB(0, 162, 255),
+                Size = UDim2.new(0, 24, 0, 24),
+                ImageColor3 = Color3.fromRGB(0, 200, 255),
                 Name = "Icon"
             }),
-            SetProps(MakeElement("Label", NotificationConfig.Name, 15), {
-                Size = UDim2.new(1, -30, 0, 20),
-                Position = UDim2.new(0, 30, 0, 0),
+            SetProps(MakeElement("Label", NotificationConfig.Name, 16), {
+                Size = UDim2.new(1, -35, 0, 20),
+                Position = UDim2.new(0, 35, 0, 0),
                 Font = Enum.Font.GothamBold,
                 Name = "Title",
                 TextColor3 = Color3.fromRGB(255, 255, 255) 
@@ -452,7 +452,7 @@ function OrionLib:MakeNotification(NotificationConfig)
                 Font = Enum.Font.GothamSemibold,
                 Name = "Content",
                 AutomaticSize = Enum.AutomaticSize.Y,
-                TextColor3 = Color3.fromRGB(180, 180, 180),
+                TextColor3 = Color3.fromRGB(200, 200, 200),
                 TextWrapped = true
             })
         })
@@ -461,11 +461,11 @@ function OrionLib:MakeNotification(NotificationConfig)
 
         wait(NotificationConfig.Time - 0.88)
         TweenService:Create(NotificationFrame.Icon, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
-        TweenService:Create(NotificationFrame, TweenInfo.new(0.8, Enum.EasingStyle.Quint), {BackgroundTransparency = 0.6}):Play()
+        TweenService:Create(NotificationFrame, TweenInfo.new(0.8, Enum.EasingStyle.Quint), {BackgroundTransparency = 0.4}):Play()
         wait(0.3)
         TweenService:Create(NotificationFrame.UIStroke, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Transparency = 0.9}):Play()
-        TweenService:Create(NotificationFrame.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.4}):Play()
-        TweenService:Create(NotificationFrame.Content, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.5}):Play()
+        TweenService:Create(NotificationFrame.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.3}):Play()
+        TweenService:Create(NotificationFrame.Content, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.4}):Play()
         wait(0.05)
 
         NotificationFrame:TweenPosition(UDim2.new(1, 20, 0, 0), 'In', 'Quint', 0.8, true)
@@ -486,9 +486,9 @@ end
 
 function OrionLib:MakeWindow(WindowConfig)
 	local FirstTab = true
-	local Minimized = true
-	local Loaded = true
-	local UIHidden = true
+	local Minimized = false
+	local Loaded = false
+	local UIHidden = false
 
 	WindowConfig = WindowConfig or {}
 	WindowConfig.Name = WindowConfig.Name or "Orion Library"
@@ -661,7 +661,7 @@ function OrionLib:MakeWindow(WindowConfig)
 	AddDraggingFunctionality(DragPoint, MainWindow)
 
 	AddConnection(CloseBtn.MouseButton1Up, function()
-		MainWindow.Visible = true
+		MainWindow.Visible = false
 		UIHidden = true
 		WindowConfig.CloseCallback()
 	end)
