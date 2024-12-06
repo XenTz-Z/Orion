@@ -29,11 +29,11 @@ local OrionLib = {
 		},
 		XIE2 = {
 			Main = Color3.fromRGB(45, 45, 85),        
-    			Second = Color3.fromRGB(65, 65, 125),   
-    			Stroke = Color3.fromRGB(90, 90, 180),    
-    			Divider = Color3.fromRGB(110, 110, 200), 
-    			Text = Color3.fromRGB(255, 255, 255),    
-    			TextDark = Color3.fromRGB(200, 200, 255)  
+    		Second = Color3.fromRGB(65, 65, 125),   
+    		Stroke = Color3.fromRGB(90, 90, 180),    
+    		Divider = Color3.fromRGB(110, 110, 200), 
+    		Text = Color3.fromRGB(255, 255, 255),    
+    		TextDark = Color3.fromRGB(200, 200, 255)  
 		}
 	},
 	SelectedTheme = "XIE2",
@@ -478,8 +478,9 @@ function OrionLib:Init()
     if OrionLib.SaveCfg then
         pcall(function()
             local cfgFolder = OrionLib.Folder .. "/" .. game.GameId .. ".txt"
-            if isfile(cfgFolder) then
-                LoadCfg(readfile(cfgFolder))
+            local cfgContent = readfile(cfgFolder)
+            if cfgContent then
+                LoadCfg(cfgContent)
             end
         end)
     end
