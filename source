@@ -34,9 +34,17 @@ local OrionLib = {
     		Divider = Color3.fromRGB(110, 110, 200), 
     		Text = Color3.fromRGB(255, 255, 255),    
     		TextDark = Color3.fromRGB(200, 200, 255)  
+		},
+		XIE3 = {
+			Main = Color3.fromRGB(45, 45, 85)       
+			Second = Color3.fromRGB(65, 65, 125) 
+			Stroke = Color3.fromRGB(90, 90, 180)    
+			Divider = Color3.fromRGB(110, 110, 200) 
+			Text = Color3.fromRGB(255, 255, 255)  
+			TextDark = Color3.fromRGB(200, 200, 255)
 		}
 	},
-	SelectedTheme = "XIE2",
+	SelectedTheme = "XIE3",
 	Folder = nil,
 	SaveCfg = false
 }
@@ -425,18 +433,18 @@ function OrionLib:MakeNotification(NotificationConfig)
             Parent = NotificationHolder
         })
 
-        local NotificationFrame = SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(20, 20, 25), 0, 12), {
+        local NotificationFrame = SetChildren(SetProps(MakeElement("RoundFrame", Color3.fromRGB(40, 40, 45), 0, 12), {
             Parent = NotificationParent, 
             Size = UDim2.new(1, 0, 0, 0),
             Position = UDim2.new(1, -55, 0, 0),
             BackgroundTransparency = 0,
             AutomaticSize = Enum.AutomaticSize.Y
         }), {
-            MakeElement("Stroke", Color3.fromRGB(80, 150, 250), 1.5),
+            MakeElement("Stroke", Color3.fromRGB(100, 200, 250), 1.5),
             MakeElement("Padding", 15, 15, 15, 15),
             SetProps(MakeElement("Image", NotificationConfig.Image), {
                 Size = UDim2.new(0, 24, 0, 24),
-                ImageColor3 = Color3.fromRGB(0, 200, 255),
+                ImageColor3 = Color3.fromRGB(0, 170, 255),
                 Name = "Icon"
             }),
             SetProps(MakeElement("Label", NotificationConfig.Name, 16), {
@@ -444,7 +452,7 @@ function OrionLib:MakeNotification(NotificationConfig)
                 Position = UDim2.new(0, 35, 0, 0),
                 Font = Enum.Font.GothamBold,
                 Name = "Title",
-                TextColor3 = Color3.fromRGB(255, 255, 255) 
+                TextColor3 = Color3.fromRGB(230, 230, 230) 
             }),
             SetProps(MakeElement("Label", NotificationConfig.Content, 14), {
                 Size = UDim2.new(1, 0, 0, 0),
@@ -452,7 +460,7 @@ function OrionLib:MakeNotification(NotificationConfig)
                 Font = Enum.Font.GothamSemibold,
                 Name = "Content",
                 AutomaticSize = Enum.AutomaticSize.Y,
-                TextColor3 = Color3.fromRGB(200, 200, 200),
+                TextColor3 = Color3.fromRGB(180, 180, 180),
                 TextWrapped = true
             })
         })
